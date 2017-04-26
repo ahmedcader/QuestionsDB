@@ -6,6 +6,8 @@ class Category(models.Model):
     sub_category = models.ForeignKey('self', blank=True, null=True, related_name='subcategory')
 
     def __str__(self):
+        if self.sub_category is not None:
+            return '{0} - {1}'.format(self.sub_category.name, self.name)
         return self.name
 
     def get_id(self):

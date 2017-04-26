@@ -15,11 +15,7 @@
 {% block pagecontent %}
     {% url 'profile_page' user.id as profile_url %}
     <div class="breadcrumb-container">
-        {{ category.id }}
-        {#        {% if category.sub_category != None %}#}
-        {#            <small class="breadcrumb-link-child"><a href="{% url 'category_page' category.sub_category %}">{{ category.sub_category }}</a> ·</small>#}
-        {#            <small class="breadcrumb-link-child"><a href="{{ request.path }}">{{ category.name }}</a></small>#}
-        {#        {% endif %}#}
+        breadcrumb
     </div>
     <h3 class="special-category-title-header">{{ category.name }}</h3>
     <h5 class="special-category-description-text">{{ category.description }}</h5>
