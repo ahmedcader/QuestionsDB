@@ -1,0 +1,176 @@
+* {
+    font-family: "Arial";
+}
+
+h1 {
+    color: royalblue;
+    margin: 20px auto 0px 20px;
+}
+
+small {
+    margin: 0px auto auto 20px;
+}
+
+h3 {
+    margin: 0px auto 15px 20px;
+}
+
+.container-left-padded {
+    margin: 10px auto auto 20px;
+}
+
+.special-welcome-header {
+    display: inline-block;
+    font-size: 13px;
+    margin: 0px auto 3px 20px;
+}
+
+.special-last-login-header {
+    display: block;
+    font-size: 12px;
+}
+
+.special-logout-header {
+    display: inline-block;
+    font-size: 12px;
+}
+
+.logout-link-text {
+    text-decoration: none;
+}
+
+.special-welcome-header-n {
+    margin: 0px auto 5px 20px;
+}
+
+.special-category-title-header {
+    margin: 20px auto 3px 20px;
+}
+
+.special-category-description-text {
+    font-size: 13px;
+    margin: 0px auto 20px 20px;
+}
+
+.navigation {
+    margin: auto auto 10px 20px;
+}
+
+.navigation-links-container {
+    float: left;
+    margin: 5px auto auto auto;
+}
+
+.page-topic {
+    margin: 10px auto 20px 20px;
+}
+
+.page-topic-username {
+    margin: 10px auto auto 20px;
+}
+
+.register-form {
+    margin: auto auto auto 20px;
+}
+
+.current-page {
+    color: grey;
+}
+
+.header-sep {
+    margin: 15px 23px 25px auto;
+}
+
+.incorrect-login {
+    color: red;
+    font-weight: bold;
+}
+
+.incorrect-login-container {
+    margin: auto auto auto 20px;
+}
+
+.incorrect-login-content {
+    margin: 0px;
+}
+
+.permissions {
+    font-size: 12px;
+    margin: 10px auto auto auto;
+}
+
+.secondary-view {
+    color: gray;
+}
+
+.user-nav-panel {
+    text-align: right;
+    width: 50%;
+    float: right;
+    margin: 5px auto auto auto;
+}
+
+.nav-panel-container {
+    margin: auto 25px auto auto;
+}
+
+.main-paragraph {
+    font-size: 13px;
+    margin: 0px auto auto 20px;
+}
+
+.spacing {
+    margin: 10px auto auto auto;
+}
+
+.categories-container {
+    margin: 30px auto auto 20px;
+}
+
+.category-title {
+    display: block;
+
+}
+
+.category-title-text {
+    margin: auto auto auto auto;
+    font-size: 18px;
+}
+
+.category-description {
+    display: block;
+
+}
+
+.category-description-text {
+    margin: 3px auto auto auto;
+    font-size: 13px;
+
+}
+
+.category-row {
+    margin: auto auto 30px auto;
+}
+
+.user-information-container {
+    text-align: right;
+    margin: -29px 25px auto auto;
+    float: right;
+}
+
+.nav-container {
+    display: inline-block;
+    width: 100%;
+}
+
+.breadcrumb-link {
+    margin: 0px auto auto 12px;
+}
+
+.breadcrumb-link-child {
+    margin: auto;
+}
+
+.breadcrumb-container {
+    margin: 0px auto auto 20px;
+}

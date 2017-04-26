@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<body>
+{% block pageheaders %}
+    <h1>QuestionsDB</h1>
+    <h3>The answer to every question!</h3>
+{% endblock %}
+
+{% block pagecontent %}
+
+    <h3 class="page-topic">Login</h3>
+    <form class="register-form" method="POST">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Username:</td>
+                <td><input type="username" name="username"><br></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" name="password"><br></td>
+            </tr>
+        </table>
+        <br>
+        <input type="submit" value="Login"/>
+
+    </form>
+    <div class="spacing"></div>
+    <small>Don't have an account? You can register one <a href="{% url 'register_page' %}">here</a>.</small>
+    {% if login_failed %}
+        <div class="incorrect-login-container">
+            <small><p class="incorrect-login-content">You have entered an <span class="incorrect-login">incorrect username or password</span>.
+                Please try again.</p></small>
+        </div>
+    {% endif %}
+
+{% endblock %}
+</body>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Login &bull; QuestionsDB {% endblock %}</title>
+</head>
+</html>

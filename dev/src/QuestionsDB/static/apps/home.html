@@ -1,0 +1,46 @@
+{% extends 'main.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} QuestionsDB {% endblock %}</title>
+</head>
+<body>
+{% block pageheaders %}
+    <h1>QuestionsDB</h1>
+    <h3>The answer to every question!</h3>
+{% endblock %}
+
+{% block pagecontent %}
+    {% if not user.is_authenticated %}
+
+        <h3 class="special-welcome-header-n">Welcome!</h3>
+        <p class="main-paragraph">Before you start asking questions, make sure to register an account with QuestionsDB.
+            <br> It will only take 2 minutes!</p>
+        <div class="container-left-padded">
+            <form action="{% url 'register_page' %}">
+                <input type="submit" value="Sure! Let's do it"/>
+            </form>
+
+        </div>
+    {% endif %}
+
+    <div class="categories-container">
+        {% for category in categories %}
+            <div class="category-row">
+                <div class="category-title">
+                    <h2 class="category-title-text"><a href="{% url 'category_page' category.name %}">{{ category.name }}</a></h2>
+                </div>
+                <div class="category-description">
+                    <h5 class="category-description-text">{{ category.description }}</h5>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
+
+</body>
+</html>

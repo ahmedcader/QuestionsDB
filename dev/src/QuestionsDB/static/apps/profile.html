@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Profile &bull; QuestionsDB {% endblock %}</title>
+</head>
+<body>
+{% block pageheaders %}
+    <h1>QuestionsDB</h1>
+    <h3>The answer to every question!</h3>
+{% endblock %}
+
+{% block pagecontent %}
+    {% if profile == None %}
+        <div class="incorrect-login-container">
+            <p><span class="incorrect-login">that user doesn't exist.</span></p>
+        </div>
+    {% else %}
+
+        <h2 class="page-topic-username">{{ profile.username }}</h2>
+        {% if profile.first_name == '' or profile.last_name == '' %}
+            <small>Name: <span class="secondary-view">Invisible</span></small><br>
+        {% else %}
+            <small>Name: {{ profile.first_name }} {{ profile.last_name }}</small><br>
+        {% endif %}
+        <small>Email: {{ profile.email }}</small><br>
+        <small>Joined: {{ profile.date_joined }}</small><br>
+        <small>Status: {% if profile.is_staff %} <strong>Staff</strong> {% else %} <strong>User</strong> {% endif %}
+        </small>
+    {% endif %}
+{% endblock %}
+</body>
+</html>
