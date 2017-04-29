@@ -14,17 +14,6 @@
 
 {% block pagecontent %}
     {% url 'profile_page' user.id as profile_url %}
-    <div class="breadcrumb-container">
-        <small>
-            {% if category.get_all_children %}
-                {% for category in category.get_all_children %}
-                    <a class="breadcrumb-link" href="">{{ category.name }}</a>
-
-                {% endfor %}
-            {% endif %}
-        </small>
-
-    </div>
     <h3 class="special-category-title-header">{{ category.name }}</h3>
     <h5 class="special-category-description-text">{{ category.description }}</h5>
     <div class="categories-container">
@@ -35,7 +24,8 @@
                 <div class="category-row">
                     <div class="category-title">
                         <h2 class="category-title-text">
-                            <a href="{{ category.get_slug }}?p={{ category.id }}&c={{ category.sub_category_id }}">{{ category.name }}</a>
+                            <a href="{{ category.get_slug }}?p={{ category.id }}&c={{ category.sub_category_id }}">{{ category.name }}
+                            </a>
                         </h2>
                     </div>
                     <div class="category-description">

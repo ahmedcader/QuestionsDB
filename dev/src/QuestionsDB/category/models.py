@@ -37,11 +37,3 @@ class Category(models.Model):
             p = p.sub_category
         parents.reverse()
         return parents
-        # r = []
-        # if include_self:
-        #     r.append(self)
-        # for c in Category.objects.filter(sub_category=self):
-        #     _r = c.get_all_children(include_self=True)
-        #     if 0 < len(_r):
-        #         r.extend(_r)
-        # return r
