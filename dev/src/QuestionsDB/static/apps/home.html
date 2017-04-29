@@ -19,7 +19,7 @@
         <p class="main-paragraph">Before you start asking questions, make sure to register an account with QuestionsDB.
             <br> It will only take 2 minutes!</p>
         <div class="container-left-padded">
-            <form action="{% url 'register_page' %}">
+            <form class="quick-register-form" action="{% url 'register_page' %}">
                 <input type="submit" value="Sure! Let's do it"/>
             </form>
 
@@ -30,7 +30,13 @@
         {% for category in categories %}
             <div class="category-row">
                 <div class="category-title">
-                    <h2 class="category-title-text"><a href="{% url 'category_page' category.get_id %}">{{ category.name }}</a></h2>
+                    <h2 class="category-title-text">
+                        {% if category.get_id == '' %}
+                            <a href="{% url 'category_page' category.get_slug %}?c={{ category.get_sub_id }}">{{ category.name }}</a>
+                        {% else %}
+                            <a href="{% url 'category_page' category.get_slug %}?p={{ category.get_id }}">{{ category.name }}</a>
+                        {% endif %}
+                    </h2>
                 </div>
                 <div class="category-description">
                     <h5 class="category-description-text">{{ category.description }}</h5>

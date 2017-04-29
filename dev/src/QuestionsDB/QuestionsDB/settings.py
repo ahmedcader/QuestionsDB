@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'Profile',
     'posts',
     'category',
+    'postdetail',
 ]
 
 MIDDLEWARE = [

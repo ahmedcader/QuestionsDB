@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} QuestionsDB {% endblock %}</title>
+</head>
+<body>
+{% block pageheaders %}
+    <h1>QuestionsDB</h1>
+    <h3>The answer to every question!</h3>
+{% endblock %}
+
+{% block pagecontent %}
+    <div class="breadcrumb-container">
+        <small>
+            {% if category.get_all_children %}
+                {% for category in category.get_all_children %}
+                    <a class="breadcrumb-link" href="">{{ category.name }}</a>
+                    {% if not forloop.last %}
+                        \
+                    {% endif %}
+                {% endfor %}
+                \ <a class="breadcrumb-link" href="">{{ category.name }}</a>
+            {% endif %}
+        </small>
+    </div>
+    <div class="post-detail-container">
+    <h2></h2>
+    </div>
+
+{% endblock %}
+
+</body>
+</html>

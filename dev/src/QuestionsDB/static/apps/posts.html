@@ -13,21 +13,46 @@
 {% endblock %}
 
 {% block pagecontent %}
-    {% if not user.is_authenticated %}
-
-        <h3 class="special-welcome-header-n">Welcome!</h3>
-        <p class="main-paragraph">Before you start asking questions, make sure to register an account with QuestionsDB.
-            <br> It will only take 2 minutes!</p>
-        <div class="container-left-padded">
-            <form action="{% url 'register_page' %}">
-                <input type="submit" value="Sure! Let's do it"/>
-            </form>
-
-        </div>
-    {% endif %}
-
+    <div class="breadcrumb-container">
+        <small>
+            {% if category.get_all_children %}
+                {% for category in category.get_all_children %}
+                    <a class="breadcrumb-link" href="">{{ category.name }}</a>
+                    {% if not forloop.last %}
+                        \
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </small>
+    </div>
+    <h3>{{ category.name }}</h3>
     <div class="posts">
-    <h3>Posts</h3>
+        {% if posts.count == 0 %}
+            <h5>Looks like there's no posts here. Check back later.</h5>
+        {% else %}
+            {% for post in posts %}
+                <div class="post-row">
+                    <div class="post-title">
+                        <h2 class="category-title-text">
+                            <a href="{{ post.get_id }}/{{ post.get_slug }}?p={{ category.id }}&c={{ category.sub_category_id }}">{{ post.get_title }}</a>
+                        </h2>
+                    </div>
+                    <div class="user-information">
+                        {% url 'profile_page' post.user.get_username as profile_url %}
+                        <p class="category-description-text post-user">by
+                            <a href="{% url 'profile_page' post.user.get_username %}">{{ post.user.get_username }}</a>
+                        </p> ·
+                        <p class="category-description-text post-date">{{ post.get_date_posted }}</p>
+                    </div>
+                    <div class="post-detail">
+                        <div class="category-description">
+                            <p class="category-description-text">{{ post.get_body|truncatewords:25 }}</p>
+                        </div>
+
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
     </div>
 
 {% endblock %}

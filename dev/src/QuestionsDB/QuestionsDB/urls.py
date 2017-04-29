@@ -7,6 +7,6 @@ urlpatterns = [
     url(r'^login', include('login.urls')),
     url(r'^logout', include('logout.urls')),
     url(r'^profile/', include('Profile.urls')),
-    url(r'^(?P<category_id>\d+)/', include('category.urls')),
+    url(r'^(?P<category_slug>[\w-]+)/', include('category.urls')),
     url(r'^', include('home.urls')),
 ]

@@ -4,15 +4,15 @@
 
 h1 {
     color: royalblue;
-    margin: 20px auto 0px 20px;
+    margin: 20px auto auto 20px;
 }
 
 small {
-    margin: 0px auto auto 20px;
+    margin: auto auto auto 20px;
 }
 
 h3 {
-    margin: 0px auto 15px 20px;
+    margin: auto auto 15px 20px;
 }
 
 .container-left-padded {
@@ -78,7 +78,7 @@ h3 {
 }
 
 .header-sep {
-    margin: 15px 23px 25px auto;
+    margin: 15px 23px auto auto;
 }
 
 .incorrect-login {
@@ -91,12 +91,16 @@ h3 {
 }
 
 .incorrect-login-content {
-    margin: 0px;
+    margin: auto;
 }
 
 .permissions {
     font-size: 12px;
     margin: 10px auto auto auto;
+}
+
+.quick-register-form {
+    margin: auto auto 10px auto;
 }
 
 .secondary-view {
@@ -164,7 +168,7 @@ h3 {
 }
 
 .breadcrumb-link {
-    margin: 0px auto auto 12px;
+    margin: auto 2px auto 2px;
 }
 
 .breadcrumb-link-child {
@@ -172,5 +176,62 @@ h3 {
 }
 
 .breadcrumb-container {
-    margin: 0px auto auto 20px;
+    margin: auto auto 30px auto;
+}
+
+.posts {
+    margin: auto auto auto 20px;
+}
+
+.post-title {
+
+}
+
+.post-title-text {
+    color: green;
+}
+
+.post-description {
+    width: 80%;
+    display: inline-block;
+}
+
+.user-information {
+    display: inline-block;
+    text-align: left;
+    width: auto;
+    margin: auto 20px auto 5px;
+}
+
+.user-information-information {
+    display: block;
+}
+
+.user-information-date {
+    display: block;
+}
+
+.post-title {
+    display: block;
+    margin: 5px auto auto 5px;
+}
+
+.post-user {
+    display: inline-block;
+}
+
+.post-row {
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    margin: auto auto 20px auto;
+    width: 55%;
+    float: left;
+}
+
+.post-date {
+    display: inline-block;
+}
+
+.post-detail {
+    margin: auto auto 6px 5px;
 }
