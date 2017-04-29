@@ -13,18 +13,6 @@
 {% endblock %}
 
 {% block pagecontent %}
-    <div class="breadcrumb-container">
-        <small>
-            {% if category.get_all_children %}
-                {% for category in category.get_all_children %}
-                    <a class="breadcrumb-link" href="">{{ category.name }}</a>
-                    {% if not forloop.last %}
-                        \
-                    {% endif %}
-                {% endfor %}
-            {% endif %}
-        </small>
-    </div>
     <h3>{{ category.name }}</h3>
     <div class="posts">
         {% if posts.count == 0 %}
