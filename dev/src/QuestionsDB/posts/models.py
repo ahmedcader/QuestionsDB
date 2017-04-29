@@ -9,7 +9,8 @@ class Post(models.Model):
     category = models.ForeignKey(Category)
     title = models.CharField(max_length=255, blank=False)
     body = models.TextField(editable=True, null=False, blank=False)
-    datePosted = models.DateTimeField(auto_now=True)
+    date_posted = models.DateTimeField(auto_now=True)
+    date_modified = models.DateTimeField(auto_now=True)
     slug_field = models.SlugField(null=True, blank=True, auto_created=True, unique=False)
 
     def get_id(self):
@@ -29,7 +30,10 @@ class Post(models.Model):
         return self.user
 
     def get_date_posted(self):
-        return self.datePosted
+        return self.date_posted
+
+    def get_date_modified(self):
+        return self.date_modified
 
     def get_post_category(self):
         return self.category

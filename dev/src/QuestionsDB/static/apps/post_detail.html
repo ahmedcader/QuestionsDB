@@ -14,7 +14,27 @@
 
 {% block pagecontent %}
     <div class="post-detail-container">
-        <h2></h2>
+        <h2 class="post-detail-title-text">{{ post.get_title }}</h2>
+        <div class="user-information post-detail-user-information">
+            {% url 'profile_page' post.user.get_username as profile_url %}
+            <p class="category-description-text post-user">
+                Posted by <a href="{% url 'profile_page' post.user.get_username %}">{{ post.user.get_username }}</a>
+            </p> ·
+            <p class="category-description-text post-date">{{ post.get_date_posted }}</p>
+        </div>
+        <div class="post-detail-post-body">
+            <p class="post-detail-body-text">
+                {{ post.get_body|linebreaksbr }}
+            </p>
+        </div>
+        <div class="post-detail-info">
+            <small class="post-detail-info-text">Last editied: {{ post.get_date_modified }}</small>
+            <small class="post-detail-info-text post-detail-info-text-date">12 views</small>
+        </div>
+        <hr class="post-detail-sep">
+    <div class="post-comment-container">
+        <h3 class="post-comment-heading">Comments</h3>
+    </div>
     </div>
 
 {% endblock %}

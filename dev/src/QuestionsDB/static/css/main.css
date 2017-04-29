@@ -183,12 +183,8 @@ h3 {
     margin: auto auto auto 20px;
 }
 
-.post-title {
-
-}
-
 .post-title-text {
-    color: green;
+
 }
 
 .post-description {
@@ -234,4 +230,46 @@ h3 {
 
 .post-detail {
     margin: auto auto 6px 5px;
+}
+
+.post-detail-container {
+    margin: 25px auto auto 20px;
+}
+
+.post-detail-title-text {
+    margin: auto auto auto auto;
+}
+
+.post-detail-user-information {
+    margin: auto auto auto auto;
+}
+
+.post-detail-post-body {
+    width: 75%;
+}
+
+.post-detail-sep {
+    margin: 10px 23px 15px auto;
+}
+
+.post-detail-info {
+    text-align: right;
+    margin: auto 23px auto auto;
+}
+
+.post-detail-info-text {
+    display: block;
+    font-size: 12px;
+}
+
+.post-detail-info-text-date {
+
+}
+
+.post-detail-body-text {
+    font-size: 15px;
+}
+
+.post-comment-heading {
+    margin: auto auto auto auto;
 }
