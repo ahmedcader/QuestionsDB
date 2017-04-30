@@ -1,4 +1,4 @@
-{% extends 'main.html' %}
+{% extends 'main.html' %}{% load mptt_tags %}{% load humanize %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +20,7 @@
             <p class="category-description-text post-user">
                 Posted by <a href="{% url 'profile_page' post.user.get_username %}">{{ post.user.get_username }}</a>
             </p> ·
-            <p class="category-description-text post-date">{{ post.get_date_posted }}</p>
+            <p class="category-description-text post-date">{{ post.get_date_posted|naturaltime }}</p>
         </div>
         <div class="post-detail-post-body">
             <p class="post-detail-body-text">
@@ -28,15 +28,59 @@
             </p>
         </div>
         <div class="post-detail-info">
-            <small class="post-detail-info-text">Last editied: {{ post.get_date_modified }}</small>
+            <small class="post-detail-info-text">Last editied: {{ post.get_date_modified|naturaltime }}</small>
             <small class="post-detail-info-text post-detail-info-text-date">12 views</small>
         </div>
         <hr class="post-detail-sep">
-        <div class="post-comment-container">
-            <h3 class="post-comment-heading">Comments</h3>
-        </div>
     </div>
+    <div class="post-comment-container">
+        <h3 class="post-comment-heading">Comments</h3>
+        {% recursetree comments %}
+            <div class="comment-container">
+                <div class="comment">
+                    <div class="comment-text">
+                        <p>{{ node.comment }}</p>
+                    </div>
+                    <a class="comment-hide" href="#">hide comment</a>
+                </div>
+                <div class="replies">
+                    {{ children }}
+                </div>
+            </div>
+            {#            {% if node.is_root_node %}#}
+            {#                {{ node.comment }}#}
+            {#            {% else %}#}
+            {#                <ul>#}
+            {#                    {{ children }}#}
+            {#                </ul>#}
+            {#            {% endif %}#}
 
+            {#            <div class="comment-row">#}
+            {#                <div class="comment-comment">#}
+            {#                    <div class="comment-body ">#}
+            {#                        <p class="comment-body-text">#}
+            {#                            <small class="comment-minimize"><a href="#" class="hide-button">[-]</a></small>#}
+            {#                            {{ node.comment }}#}
+            {#                        </p>#}
+            {#                    </div>#}
+            {#                    <div class="comment-information">#}
+            {#                        <small class="comment-user-date">posted by#}
+            {#                            <a href="{% url 'profile_page' node.user.username %}">{{ node.user.username }}</a>, {{ node.date_posted|naturaltime }} ·#}
+            {#                            <a href="">reply</a> · <a href="">edit</a>#}
+            {#                        </small>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#                <div class="comment-replies">#}
+            {#                    {% if not node.is_leaf_node %}#}
+            {##}
+            {#                        {{ children }}#}
+            {##}
+            {#                    {% endif %}#}
+            {#                </div>#}
+            {#            </div>#}
+
+        {% endrecursetree %}
+    </div>
 {% endblock %}
 
 </body>
