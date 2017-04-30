@@ -284,10 +284,6 @@ h3 {
     margin: auto auto auto auto;
 }
 
-.comment-row {
-
-}
-
 .comment-comment {
     margin: 10px auto 10px auto;
     border: 1px solid lightgray;
@@ -297,51 +293,29 @@ h3 {
     background: #f7f7f7;
 }
 
-.comment-body {
-    margin: 5px;
-}
-
-.comment-body-text {
-    margin: auto auto auto auto;
-}
-
-.comment-minimize {
-    margin: auto 5px auto auto;
-    display: inline-block;
-}
-
-.comment-information {
-    margin: 5px;
-}
-
-.comment-user-date {
-    margin: auto;
-}
-
-.comment-replies {
-    margin: auto auto auto 2%;
-}
-
-.bottom-page {
-    margin: auto auto 25px auto;
-    height: 20px;
-}
-
-.minimized-info {
-    display: none;
-}
-
 .comment {
-
+    margin: 25px auto auto auto;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    width: 98.3%;
+    float: left;
+    background: #f7f7f7;
 }
 
 .comment-text {
-    display: inline-block;
+    display: block;
+    margin: 5px;
 }
 
 .comment-hide {
     display: inline-block;
 }
+
 .replies {
     margin: auto auto auto 2%;
+}
+
+.comment-info {
+    display: block;
+    margin: 5px;
 }

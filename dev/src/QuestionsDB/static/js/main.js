@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $("a.comment-hide").click(function () {
-    $(this).parent().parent().toggle()
+        // console.log($(this).parent().parent().children().toggle())
+        $(this).getElementsByClassName('div.comment-container').next().toggle()
     });
 });
