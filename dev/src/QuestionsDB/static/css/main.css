@@ -235,7 +235,7 @@ h3 {
 }
 
 .post-detail {
-    margin: auto auto 6px 5px;
+    margin: auto auto 6px auto;
 }
 
 .post-detail-container {
@@ -294,11 +294,11 @@ h3 {
 }
 
 .comment {
-    margin: 25px auto auto auto;
+    margin: 20px auto auto 0px;
     border: 1px solid lightgray;
     border-radius: 3px;
     width: 98.3%;
-    float: left;
+    display: block;
     background: #f7f7f7;
 }
 
@@ -318,4 +318,25 @@ h3 {
 .comment-info {
     display: block;
     margin: 5px;
+}
+
+.bottom-page {
+    margin: auto auto 50px auto;
+}
+
+.add-comment {
+    margin: 10px auto auto auto;
+}
+
+.add-reply {
+    display: none;
+    margin: 5px auto 5px 5px;;
+}
+
+.comment-text-area {
+    display: block;
+}
+
+.comment-submit {
+    margin: 10px auto auto auto;
 }

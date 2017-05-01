@@ -35,14 +35,33 @@
     </div>
     <div class="post-comment-container">
         <h3 class="post-comment-heading">Comments</h3>
+        {% if request.user.is_authenticated %}
+            <div class="add-comment">
+                <form action="">
+                    <textarea placeholder="enter your comment here" class="comment-text-area" name="user-comment" id="" cols="50" rows="10"></textarea>
+                    <input class="comment-submit" type="submit" value="Submit">
+                </form>
+            </div>
+        {% endif %}
         {% recursetree comments %}
-
             <div class="comment">
                 <p class="comment-text">{{ node.comment }}</p>
                 <small class="comment-info">
-                    <a class="comment-user" href="#">{{ node.user.username }}</a> {{ node.date_posted|naturaltime }}
-                    <a class="comment-hide" href="#">hide replies</a>
+                    by <a class="comment-user" href="#">{{ node.user.username }}</a>, {{ node.date_posted|naturaltime }}
+                    {% if not node.is_leaf_node %}
+                        · <a class="comment-hide" href="#">hide replies</a>
+                    {% endif %}
+
+                    {% if request.user.is_authenticated %}
+                        · <a class="comment-reply" href="#">reply</a>
+                    {% endif %}
                 </small>
+                <div class="add-comment add-reply">
+                    <form action="">
+                        <textarea placeholder="enter your reply here" class="comment-text-area" name="user-comment" id="" cols="50" rows="10"></textarea>
+                        <input class="comment-submit" type="submit" value="Submit">
+                    </form>
+                </div>
             </div>
             <div class="comment-container">
                 <div class="replies">
@@ -50,6 +69,9 @@
                 </div>
             </div>
         {% endrecursetree %}
+    </div>
+    <div class="bottom-page">
+
     </div>
 {% endblock %}
 
