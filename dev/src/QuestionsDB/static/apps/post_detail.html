@@ -58,6 +58,9 @@
                     {% if request.user.is_authenticated %}
                         · <a class="comment-reply" href="#">reply</a>
                     {% endif %}
+                    {% if not node.is_leaf_node %}
+                        · {{ node.get_descendant_count }} children · {{ node.children.count }} replies
+                    {% endif %}
                 </small>
                 <div class="add-comment add-reply">
                     <form action="">
