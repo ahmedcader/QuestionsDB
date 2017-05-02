@@ -28,7 +28,7 @@
                     <div class="user-information">
                         {% url 'profile_page' post.user.get_username as profile_url %}
                         <p class="category-description-text post-user">by
-                            <a href="{% url 'profile_page' post.user.get_username %}">{{ post.user.get_username }}</a>
+                            <a href="{% url 'profile_page' post.user.id post.user.get_username %}">{{ post.user.get_username }}</a>
                         </p> ·
                         <p class="category-description-text post-date">{{ post.get_date_posted }}</p>
                     </div>
