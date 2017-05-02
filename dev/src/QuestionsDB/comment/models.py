@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from posts.models import Post
 from mptt.models import MPTTModel, TreeForeignKey
-from mptt.managers import TreeManager
 
 class Comment(MPTTModel):
     user = models.ForeignKey(User)

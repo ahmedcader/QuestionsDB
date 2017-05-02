@@ -14,7 +14,7 @@ class Post(models.Model):
     slug_field = models.SlugField(null=True, blank=True, auto_created=True, unique=False)
 
     def __str__(self):
-        return "{0}: {1} in {2}".format(self.get_title(), self.category.get_name(), self.category.sub_category.get_name())
+        return "{0}: {1} in {2}".format(self.get_title(), self.category.get_name(), self.category.parent.get_name())
 
     def get_id(self):
         return self.id
