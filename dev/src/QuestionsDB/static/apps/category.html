@@ -17,44 +17,29 @@
     <h3 class="special-category-title-header">{{ category.get_name }}</h3>
     <h5 class="special-category-description-text">{{ category.get_description }}</h5>
     <div class="categories-container">
-        {% recursetree categories %}
-            <div class="category-row">
-                <div class="category-title">
-                    <h2 class="category-title-text">
-                        <a href="">{{ node.get_name }}
-                        </a>
-                    </h2>
+        {% if categories.count == 0 %}
+            <h5>Looks like there's nothing here. Check back later.</h5>
+        {% else %}
+            {% recursetree categories %}
+                <div class="category-row">
+                    <div class="category-title">
+                        <h2 class="category-title-text">
+                            <a href="{{ node.id }}/{{ node.slug }}/">{{ node.get_name }}
+                            </a>
+                        </h2>
+                    </div>
+                    <div class="category-description">
+                        <p class="category-description-text">{{ node.get_description }}</p>
+                    </div>
+                    {% if not node.is_leaf_node %}
+                        <div class="category-description">
+                            <p class="category-description-text">{{ node.get_descendant_count }} Topics</p>
+                        </div>
+                    {% endif %}
                 </div>
-                <div class="category-description">
-                    <p class="category-description-text">{{ node.get_description }}</p>
-                </div>
-                <div class="category-description">
-                    <p class="category-description-text">{{ node.get_descendant_count }} Posts</p>
-                </div>
-            </div>
-        {% endrecursetree %}
+            {% endrecursetree %}
+        {% endif %}
     </div>
-
-    {#    <div class="categories-container">#}
-    {#        {% if sub_categories.count == 0 %}#}
-    {#            <h5>Looks like there's no topics here. Check back later.</h5>#}
-    {#        {% else %}#}
-    {#            {% for category in sub_categories %}#}
-    {#                <div class="category-row">#}
-    {#                    <div class="category-title">#}
-    {#                        <h2 class="category-title-text">#}
-    {#                            <a href="{{ category.get_slug }}?p={{ category.id }}&c={{ category.sub_category_id }}">{{ category.name }}#}
-    {#                            </a>#}
-    {#                        </h2>#}
-    {#                    </div>#}
-    {#                    <div class="category-description">#}
-    {#                        <p class="category-description-text">{{ category.description }}</p>#}
-    {#                    </div>#}
-    {#                </div>#}
-    {#            {% endfor %}#}
-    {#        {% endif %}#}
-    {#    </div>#}
-
 {% endblock %}
 
 </body>

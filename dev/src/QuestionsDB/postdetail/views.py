@@ -5,7 +5,7 @@ from comment.models import Comment
 from datetime import datetime
 
 
-def post_detail_page(request, category_slug, question_id, post_slug):
+def post_detail_page(request, parent_id, parent_category_slug, question_id):
     post = Post.objects.get(id=question_id)
     comments = Comment.objects.filter(post=post)
     context = {'post': post, 'comments': comments,}

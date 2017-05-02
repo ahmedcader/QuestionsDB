@@ -1,4 +1,6 @@
 {% extends 'main.html' %}
+{% load mptt_tags %}
+{% load humanize %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,35 +15,66 @@
 {% endblock %}
 
 {% block pagecontent %}
-    <h3>{{ category.name }}</h3>
+    <h3 class="special-category-title-header">{{ category.name }}</h3>
+    <h5 class="special-category-description-text">{{ category.description }}</h5>
     <div class="posts">
         {% if posts.count == 0 %}
-            <h5>Looks like there's no posts here. Check back later.</h5>
+            <h5>Looks like there's nothing here. Check back later.</h5>
         {% else %}
-            {% for post in posts %}
+            {% recursetree posts %}
+
                 <div class="post-row">
                     <div class="post-title">
                         <h2 class="category-title-text">
-                            <a href="{{ post.get_id }}/{{ post.get_slug }}?p={{ category.id }}&c={{ category.sub_category_id }}">{{ post.get_title }}</a>
+                            <a href="{{ node.get_id }}/{{ node.get_slug }}">{{ node.get_title }}</a>
                         </h2>
                     </div>
                     <div class="user-information">
-                        {% url 'profile_page' post.user.get_username as profile_url %}
                         <p class="category-description-text post-user">by
-                            <a href="{% url 'profile_page' post.user.id post.user.get_username %}">{{ post.user.get_username }}</a>
+                            <a href="{% url 'profile_page' node.user.id node.user.username %}">{{ node.user.get_username }}</a>
                         </p> ·
-                        <p class="category-description-text post-date">{{ post.get_date_posted }}</p>
+                        <p class="category-description-text post-date">{{ node.get_date_posted|naturaltime }}</p>
                     </div>
                     <div class="post-detail">
                         <div class="category-description">
-                            <p class="category-description-text">{{ post.get_body|truncatewords:35 }}</p>
+                            <p class="category-description-text">{{ node.get_body|truncatewords:45 }}</p>
                         </div>
 
                     </div>
                 </div>
-            {% endfor %}
+
+            {% endrecursetree %}
         {% endif %}
     </div>
+    {#    <h3>{{ category.name }}</h3>#}
+    {#    <div class="posts">#}
+    {#        {% if posts.count == 0 %}#}
+    {#            <h5>Looks like there's no posts here. Check back later.</h5>#}
+    {#        {% else %}#}
+    {#            {% for post in posts %}#}
+    {#                <div class="post-row">#}
+    {#                    <div class="post-title">#}
+    {#                        <h2 class="category-title-text">#}
+    {#                            <a href="{{ post.get_id }}/{{ post.get_slug }}?p={{ category.id }}&c={{ category.sub_category_id }}">{{ post.get_title }}</a>#}
+    {#                        </h2>#}
+    {#                    </div>#}
+    {#                    <div class="user-information">#}
+    {#                        {% url 'profile_page' post.user.get_username as profile_url %}#}
+    {#                        <p class="category-description-text post-user">by#}
+    {#                            <a href="{% url 'profile_page' post.user.id post.user.get_username %}">{{ post.user.get_username }}</a>#}
+    {#                        </p> ·#}
+    {#                        <p class="category-description-text post-date">{{ post.get_date_posted }}</p>#}
+    {#                    </div>#}
+    {#                    <div class="post-detail">#}
+    {#                        <div class="category-description">#}
+    {#                            <p class="category-description-text">{{ post.get_body|truncatewords:35 }}</p>#}
+    {#                        </div>#}
+    {##}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            {% endfor %}#}
+    {#        {% endif %}#}
+    {#    </div>#}
 
 {% endblock %}
 
