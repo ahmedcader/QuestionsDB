@@ -173,15 +173,15 @@ h3 {
 }
 
 .breadcrumb-link {
-    margin: auto 2px auto 2px;
+    margin: auto auto auto auto;
 }
 
-.breadcrumb-link-child {
-    margin: auto;
+.breadcrumb-link-text {
+    margin: auto auto auto 5px;
 }
 
 .breadcrumb-container {
-    margin: auto auto 30px auto;
+    margin: auto auto auto 15px;
 }
 
 .posts {

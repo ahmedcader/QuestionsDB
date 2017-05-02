@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from posts.models import Post
 from mptt.models import MPTTModel, TreeForeignKey
 
+
 class Comment(MPTTModel):
     user = models.ForeignKey(User)
     post = models.ForeignKey(Post)
@@ -15,7 +16,7 @@ class Comment(MPTTModel):
         order_insertion_by = ['date_posted']
 
     def __str__(self):
-        return "{0}".format(self.id)
+        return "{0}: {1}".format(self.user.get_username(), self.comment)
 
     def get_comment(self):
         return self.comment
