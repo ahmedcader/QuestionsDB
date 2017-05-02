@@ -1,5 +1,4 @@
-{% load static %}
-{% load humanize %}
+{% load static %}{% load humanize %}
 
 <!DOCTYPE html>
 <html>
@@ -19,18 +18,15 @@
     <nav class="navigation">
         <div class="nav-container">
             <div class="navigation-links-container">
-                {% url 'home_page' as home_url %}
-                {% url 'login_page' as login_url %}
-                {% url 'register_page' as register_url %}
-                {% url 'profile_page' user.username as profile_url %}
+                {% url 'home_page' as home_url %} {% url 'login_page' as login_url %} {% url 'register_page' as register_url %}
+
 
                 {% if request.get_full_path == home_url %}
                     <a class="current-page">Home</a>
                 {% else %}
                     <a href="{% url 'home_page' %}">Home</a>
                 {% endif %}
-                ·
-                <a href="">About</a>
+                · <a href="">About</a>
 
             </div>
             {% if user.is_authenticated %}
@@ -39,7 +35,7 @@
                         <h3 class="special-welcome-header">Welcome, <a class="current-page">{{ user }}</a></h3>
                     {% else %}
                         <h3 class="special-welcome-header">Welcome,
-                            <a href="{% url 'profile_page' user.username %}">{{ user }}</a></h3>
+                            <a href="{% url 'profile_page' user.id user.username %}">{{ user }}</a></h3>
                     {% endif %}
                     <small class="special-last-login-header">Last login: {{ user.last_login }}</small>
                     <small class="special-logout-header">
