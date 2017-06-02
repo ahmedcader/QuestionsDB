@@ -39,8 +39,9 @@
         <h3 class="post-comment-heading">Comments</h3>
         {% if request.user.is_authenticated %}
             <div class="add-comment">
-                <form action="">
-                    <textarea placeholder="enter your comment here" class="comment-text-area" name="user-comment" id="" cols="50" rows="10"></textarea>
+                <form method="POST" action="#">
+                    {% csrf_token %}
+                    <textarea placeholder="enter your comment here" class="comment-text-area" name="user-comment" id="" cols="50" rows="10" required></textarea>
                     <input class="comment-submit" type="submit" value="Submit">
                 </form>
             </div>
@@ -63,8 +64,9 @@
                     {% endif %}
                 </small>
                 <div class="add-comment add-reply">
-                    <form action="">
-                        <textarea placeholder="enter your reply here" class="comment-text-area" name="user-comment" id="" cols="50" rows="10"></textarea>
+                    <form method="POST" action="#">
+                        {% csrf_token %}
+                        <textarea placeholder="enter your reply here" class="comment-text-area" name="user-comment" id="" cols="50" rows="10" required></textarea>
                         <input class="comment-submit" type="submit" value="Submit">
                     </form>
                 </div>

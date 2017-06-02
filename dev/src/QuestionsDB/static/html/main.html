@@ -18,7 +18,9 @@
     <nav class="navigation">
         <div class="nav-container">
             <div class="navigation-links-container">
-                {% url 'home_page' as home_url %} {% url 'login_page' as login_url %} {% url 'register_page' as register_url %}
+                {% url 'home_page' as home_url %}
+{#                {% url 'login_page' as login_url %}#}
+{#                {% url 'register_page' as register_url %}#}
 
 
                 {% if request.get_full_path == home_url %}
@@ -39,7 +41,7 @@
                     {% endif %}
                     <small class="special-last-login-header">Last login: {{ user.last_login }}</small>
                     <small class="special-logout-header">
-                        <a class="logout-link-text" href="{% url 'logout_page' %}?redirect={{ request.get_full_path }}">Logout</a>
+                        <a class="logout-link-text" href="{% url 'auth_logout' %}?next={{ request.path | urlencode }}">Logout</a>
                     </small>
                 </div>
             {% else %}
@@ -48,12 +50,12 @@
                         {% if request.get_full_path == login_url %}
                             <a class="current-page">Login</a>
                         {% else %}
-                            <a href="{% url 'login_page' %}?redirect={{ request.get_full_path }}">Login</a>
+                            <a href="{% url 'auth_login' %}?next={{ request.path | urlencode }}">Login</a>
                         {% endif %} ·
                         {% if request.get_full_path == register_url %}
                             <a class="current-page">Register</a>
                         {% else %}
-                            <a href="{% url 'register_page' %}">Register</a>
+                            <a href="{% url 'registration_register' %}">Register</a>
                         {% endif %}
                     </div>
                 </div>

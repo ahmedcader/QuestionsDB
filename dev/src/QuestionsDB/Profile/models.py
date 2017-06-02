@@ -8,6 +8,12 @@ class Profile(models.Model):
     date_of_birth = models.DateField(null=True, blank=True)
     location = models.CharField(max_length=30, blank=True)
 
+    def username_exists(email):
+        return User.objects.filter(username=username).exists()
+
+    def email_exists(email):
+        return User.objects.filter(email=email).exists()
+
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:

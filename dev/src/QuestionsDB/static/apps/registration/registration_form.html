@@ -1,0 +1,45 @@
+{% extends "main.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Register &bull; QuestionsDB {% endblock %}</title>
+</head>
+<body>
+{% block pageheaders %}
+    <h1>QuestionsDB</h1>
+    <h3>The answer to every question!</h3>
+{% endblock %}
+
+{% load i18n %}
+
+{% block pagecontent %}
+    <h3 class="page-topic">Create an account to start asking questions</h3>
+    <form class="register-form" method="post" action=".">
+        {% csrf_token %}
+{#        {{ form.as_p }}#}
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+        {% for field in form.visible_fields %}
+
+            <ul class="form-label-input">
+                {{ field.label_tag }}
+                {{ field }}
+            </ul>
+
+            {% for err in field.errors %}
+                {{ err }}
+            {% endfor %}
+        {% endfor %}
+        <input type="submit" value="{% trans 'Submit' %}"/>
+    </form>
+    {% if form.non_field_errors %}
+        {% for err in form.non_field_errors %}
+            <ul class="form-error-labels"><small>{{ err }}</small></ul>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+</body>
+</html>

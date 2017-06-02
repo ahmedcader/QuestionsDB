@@ -21,5 +21,8 @@ class Comment(MPTTModel):
     def get_comment(self):
         return self.comment
 
+    def get_parent(self):
+        return self.parent
+
     def save(self, *args, **kwargs):
         super(Comment, self).save(*args, **kwargs)

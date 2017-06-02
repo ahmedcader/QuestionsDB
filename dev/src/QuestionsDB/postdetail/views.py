@@ -12,4 +12,6 @@ def post_detail_page(request, parent_id, parent_category_slug, question_id):
     comments = Comment.objects.filter(post=post)
     categories = Category.objects.get(id=parent_id)
     context = {'post': post, 'comments': comments,}
+    user_comment = request.POST.get('user-comment')
+    print(user_comment)
     return render(request, 'post_detail.html', context)
