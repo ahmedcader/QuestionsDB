@@ -1,0 +1,65 @@
+{% extends "main.html" %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Login &bull; QuestionsDB {% endblock %}</title>
+</head>
+<body>
+{% block pageheaders %}
+    <h1>QuestionsDB</h1>
+    <h3>The answer to every question!</h3>
+{% endblock %}
+
+{% block pagecontent %}
+    {% if user.is_authenticated %}
+        <p class="form-extra-links">
+            <small>{% trans "You are already logged in. You can log out" %} <a
+                    href="{% url 'auth_logout' %}?next={{ request.path | urlencode }}">{% trans "here" %}</a>.
+            </small>
+        </p>
+    {% else %}
+        <form class="register-form" method="post" action=".">
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+            {% for field in form.visible_fields %}
+                <ul class="form-label-input">
+                    {{ field.label_tag }}
+                </ul>
+                <ul class="form-label-input">
+                    {{ field }}
+                </ul>
+                {% for err in field.errors %}
+                    {{ err }}
+                {% endfor %}
+            {% endfor %}
+
+            <input class="submit-button-login" type="submit" value="{% trans 'Log in' %}"/>
+            <input type="hidden" name="next" value="{{ next }}"/>
+
+        </form>
+        <p class="form-extra-links">
+            <small>{% trans "Forget your password? " %} <a
+                    href="{% url 'auth_password_reset' %}">{% trans "Reset" %}</a> it.
+            </small>
+        </p>
+        <p class="form-extra-links">
+            <small>{% trans "Not a member? " %}<a href="{% url 'registration_register' %}">{% trans "Register" %}</a> an
+                account.
+            </small>
+        </p>
+        {% if form.non_field_errors %}
+            {% for err in form.non_field_errors %}
+                <ul class="form-error-labels">
+                    <small>{{ err }}</small>
+                </ul>
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+{% endblock %}
+</body>
+</html>
