@@ -1,0 +1,25 @@
+{% extends "main.html" %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Register &bull; QuestionsDB {% endblock %}</title>
+</head>
+<body>
+{% block pageheaders %}
+    <h1>QuestionsDB</h1>
+    <h3>The answer to every question!</h3>
+{% endblock %}
+
+{% block pagecontent %}
+    <p class="activation-message-complete">
+        Your account has been successfully created.
+    </p>
+    <p class="form-extra-links">
+        <small>An activation link has been sent to your email as a final step to complete your registration.</small>
+    </p>
+{% endblock %}
+</body>
+</html>
