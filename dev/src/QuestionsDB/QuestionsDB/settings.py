@@ -39,10 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'registration',
     'mptt',
-	'register',
     'home',
-    'login',
-    'logout',
     'Profile',
     'posts',
     'category',
@@ -53,6 +50,7 @@ INSTALLED_APPS = [
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
 SITE_ID = 1
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # LOGIN_REDIRECT_URL = '/'
 
 MIDDLEWARE = [

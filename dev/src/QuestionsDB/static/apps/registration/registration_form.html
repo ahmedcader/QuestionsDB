@@ -15,31 +15,47 @@
 {% load i18n %}
 
 {% block pagecontent %}
-    <h3 class="page-topic">Create an account to start asking questions</h3>
-    <form class="register-form" method="post" action=".">
-        {% csrf_token %}
-{#        {{ form.as_p }}#}
-        {% for hidden in form.hidden_fields %}
-            {{ hidden }}
-        {% endfor %}
+    {% if user.is_authenticated %}
+        <p class="form-extra-links">
+            <small>{% trans "You are already a registered member. You can log out" %} <a
+                    href="{% url 'auth_logout' %}?next={{ request.path | urlencode }}">{% trans "here" %}</a>.
+            </small>
+        </p>
+    {% else %}
+        <h3 class="page-topic">Create an account to start asking questions</h3>
+        <form class="register-form" method="post" action=".">
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+            {% for field in form.visible_fields %}
+                <ul class="form-label-input">
+                    {{ field.label_tag }}
+                </ul>
+                <ul class="form-label-input">
+                    {{ field }}
+                </ul>
+            {% endfor %}
+            <input class="submit-button-login" type="submit" value="{% trans 'Create Account' %}"/>
+        </form>
+
+        {% if form.non_field_errors %}
+            {% for err in form.non_field_errors %}
+                <ul class="form-error-labels">
+                    <small>{{ err }}</small>
+                </ul>
+            {% endfor %}
+        {% endif %}
         {% for field in form.visible_fields %}
-
-            <ul class="form-label-input">
-                {{ field.label_tag }}
-                {{ field }}
-            </ul>
-
             {% for err in field.errors %}
-                {{ err }}
+                <ul class="form-error-labels">
+                    <small>{{ err }}</small>
+                </ul>
             {% endfor %}
         {% endfor %}
-        <input type="submit" value="{% trans 'Submit' %}"/>
-    </form>
-    {% if form.non_field_errors %}
-        {% for err in form.non_field_errors %}
-            <ul class="form-error-labels"><small>{{ err }}</small></ul>
-        {% endfor %}
+
     {% endif %}
+
 {% endblock %}
 </body>
 </html>

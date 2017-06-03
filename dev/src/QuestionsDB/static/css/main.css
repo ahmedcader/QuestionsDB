@@ -75,6 +75,7 @@ h3 {
 
 .form-label-input {
     padding: 0;
+    margin: 0 0 7px 0;
 }
 
 .form-error-labels {
@@ -87,7 +88,7 @@ h3 {
 }
 
 .submit-button-login {
-    margin: 0 0 10px 0;
+    margin: 5px 0 10px 0;
 }
 .current-page {
     color: grey;
@@ -355,4 +356,22 @@ h3 {
 
 .comment-submit {
     margin: 10px auto auto auto;
+}
+
+.activation-message-complete {
+    margin: 20px 0 0 19px;
+    color: green;
+}
+
+.main-paragraph-md {
+    margin: 0px auto 20px 19px;
+}
+.success {
+    color: green;
+}
+.bottom-md {
+    margin-bottom:5px;
+}
+.no-padding-lf {
+    margin-left:0;
 }

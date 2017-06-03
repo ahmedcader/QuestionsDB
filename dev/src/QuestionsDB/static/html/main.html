@@ -19,9 +19,6 @@
         <div class="nav-container">
             <div class="navigation-links-container">
                 {% url 'home_page' as home_url %}
-{#                {% url 'login_page' as login_url %}#}
-{#                {% url 'register_page' as register_url %}#}
-
 
                 {% if request.get_full_path == home_url %}
                     <a class="current-page">Home</a>
@@ -47,12 +44,15 @@
             {% else %}
                 <div class="user-nav-panel">
                     <div class="nav-panel-container">
-                        {% if request.get_full_path == login_url %}
+                        {% url 'auth_login' as login_page %}
+                        {% url 'registration_register' as register_page %}
+
+                        {% if login_page in request.get_full_path %}
                             <a class="current-page">Login</a>
                         {% else %}
                             <a href="{% url 'auth_login' %}?next={{ request.path | urlencode }}">Login</a>
                         {% endif %} ·
-                        {% if request.get_full_path == register_url %}
+                        {% if request.get_full_path == register_page %}
                             <a class="current-page">Register</a>
                         {% else %}
                             <a href="{% url 'registration_register' %}">Register</a>
